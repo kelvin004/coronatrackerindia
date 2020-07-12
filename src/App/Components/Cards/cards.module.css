@@ -11,17 +11,17 @@
 }
 
 .Infected {
-  border-bottom: 10px solid rgba(0, 0, 255, 0.5);
+  border-bottom: 8px solid rgba(0, 0, 255, 0.5);
 }
 
 .Recovered {
-  border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+  border-bottom: 8px solid rgba(0, 255, 0, 0.7);
 }
 
 .Deaths {
-  border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+  border-bottom: 8px solid rgba(255, 0, 0, 0.7);
 }
 
 .active {
-  border-bottom: 10px solid rgba(255, 255, 0, 0.5);
+  border-bottom: 8px solid #cccc00;
 }

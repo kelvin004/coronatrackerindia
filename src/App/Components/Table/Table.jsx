@@ -7,8 +7,32 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { fetchStateData } from "../../API";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  tablestyle: {
+    border: 10,
+    borderRadius: 10,
+    borderBottom: "10",
+    height: "90vh",
+    padding: "10px 10px 10px 10px"
+  },
+  tablename: {
+    fontWeight: "bold"
+  },
+  tableheader: {
+    fontWeight: "bolder"
+  },
+  tableRowHover: {
+    "&:hover": {
+      backgroundColor: "#RRGGBB"
+    }
+  }
+});
 
 const TableData = props => {
+  const classes = useStyles();
+
   const [fetchedstatedata, setfetchedstate] = useState([]);
   let rows = [];
 
@@ -35,7 +59,6 @@ const TableData = props => {
 
     fetchStatedata1();
   }, [setfetchedstate]); */
-  console.log(fetchedstatedata);
   if (Array.isArray(fetchedstatedata)) {
     rows = fetchedstatedata;
   }
@@ -93,22 +116,34 @@ const TableData = props => {
   } */
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
+    <TableContainer component={Paper} className={classes.tablestyle}>
+      <Table stickyHeader aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Infected</TableCell>
-            <TableCell align="right">Active</TableCell>
-            <TableCell align="right">Deaths</TableCell>
-            <TableCell align="right">Recovered</TableCell>
+            <TableCell className={classes.tableheader}>Name</TableCell>
+            <TableCell align="right" className={classes.tableheader}>
+              Infected
+            </TableCell>
+            <TableCell align="right" className={classes.tableheader}>
+              Active
+            </TableCell>
+            <TableCell align="right" className={classes.tableheader}>
+              Deaths
+            </TableCell>
+            <TableCell align="right" className={classes.tableheader}>
+              Recovered
+            </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody tabIndex={-1}>
           {typeof rows != "undefined" ? (
             rows.map(row => (
-              <TableRow key={row.district}>
-                <TableCell component="th" scope="row">
+              <TableRow hover key={row.district}>
+                <TableCell
+                  component="th"
+                  scope="row"
+                  className={classes.tablename}
+                >
                   {row.district}
                 </TableCell>
                 <TableCell align="right">{row.confirmed}</TableCell>
